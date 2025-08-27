@@ -1,0 +1,62 @@
+## Randomly choosing a word from to do list
+
+import random
+
+listr = ["miau", "auau", "crucru"]
+
+random_word = random.choice(listr)
+
+print(random_word)
+
+
+##making it guess the word in lower case
+
+random_word_letters = list(random_word)
+random_word_letters_count = len(random_word_letters)
+
+placeholder = ""
+
+for tiles in range(random_word_letters_count):
+    placeholder += " _"
+
+print(placeholder)
+
+game_over = False
+
+correct_letters = []
+
+lifes = 6
+
+while not game_over or lifes == 0:
+
+    guess = input(f"Now, try to guess the word randomly generated. Try a letter in lower case. There are {random_word_letters_count} words to be guessed: ").lower()
+    
+    
+    ### Making a loop to check if the letter guessed is part of the word
+    
+    display = ""
+    
+    for letter in  random_word_letters:
+        if letter == guess:
+            display += letter
+            correct_letters.append(letter)
+        elif letter in correct_letters:
+            display += letter
+        else:
+            display += " _ "
+    
+    if guess not in random_word_letters:
+        lifes -= 1
+        if lifes == 0:
+            game_over = True
+            print("game over")
+            break
+    
+    print(display)
+    print(f"You have {lifes}/6 lives")
+    
+    if correct_letters == random_word_letters:
+        game_over = True
+        print("you win")
+        break
+        
