@@ -1,0 +1,25 @@
+def calculate_love_score(x, y):
+    
+    combined_names = (x + y).lower()
+    
+    #counting True
+    
+    t = combined_names.count("t")
+    r = combined_names.count("r")
+    u = combined_names.count("u")
+    e = combined_names.count("e")
+    
+    first_d = t + r + u + e
+    
+    l = combined_names.count("l")
+    o = combined_names.count("o")
+    v = combined_names.count("v")
+    e = combined_names.count("e")
+    
+    second_d = l + o + v + e
+    
+    score = int(str(first_d) + str(second_d))
+    
+    print(score)
+
+calculate_love_score("hello", "babe")
