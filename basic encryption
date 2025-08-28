@@ -1,0 +1,44 @@
+### baasic encryption
+
+
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+print(letters)
+
+
+direction = input("Type 'e' to encrypt and 'd' to decrypt: " ).lower()
+text = input("type your message: ").lower()
+shift = int(input("Type the shift number: "))
+
+def encrypt(text_inputed, shift_inputed):
+    
+    cipher = ""
+    
+    for letter in text_inputed:
+        shifted_position = letters.index(letter) + shift_inputed
+        
+        shifted_position %= len(letters) ## this will switch the
+        
+        cipher += letters[shifted_position]
+        
+    print(cipher)       
+ 
+def ceaser(text_inputed, shift_inputed, encode_decode):
+    
+    cipher = ""
+    
+    if encode_decode == "d":
+        
+        shift_inputed = -1 * shift_inputed
+    
+    for letter in text_inputed:
+        shifted_position = letters.index(letter) + shift_inputed
+        
+        shifted_position %= len(letters)
+        
+        cipher += letters[shifted_position]
+        
+    print(cipher)  
+    
+
+
+ceaser(text_inputed = text, shift_inputed = shift, encode_decode = direction)
