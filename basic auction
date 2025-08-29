@@ -1,0 +1,47 @@
+#playing with while and for loops, also dictionaries
+
+print("Hello! Welcome to the bidder platform!")
+
+names_bids = {}
+
+auction_over = False
+
+#function to get the highest bidder
+def highest_bidder(biddingledger):
+    winner = ""
+    highest_bid = 0 #counter of highest bid
+    
+    for bidder in biddingledger:
+        bid_ammount = biddingledger[bidder] #checking the legdger of bids by each key and value of the dictionary
+        if bid_ammount > highest_bid:
+            highest_bid = bid_ammount
+            winner = bidder #only the bidder's name
+    print(f"Winner is {winner} with a bid of: {highest_bid}")
+
+
+while auction_over == False:
+    name = input("Please, enter your Name: ")
+    if name.isalpha():
+        print("Name computed")
+        try:
+            bid = float(input("Please, place your BID: "))
+            print("Bid Computed")
+            names_bids[name] = bid
+            more_bidders = input("Is there another bidder? ").lower()
+            if more_bidders == "yes":
+                auction_over = False
+                continue
+            else:
+                auction_over = True
+                print("Auction over")
+                print(names_bids)
+                highest_bidder(names_bids)
+                break
+        except Exception as e:
+            print("input not valid. Only numbers")
+            logging.error("An error occurred", exc_info=True)
+            break
+    else:
+        print("Invalid input. Please enter alphabetic characters only.")
+        break
+    
